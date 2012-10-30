@@ -12,7 +12,22 @@ var analyzer   = require('./lib/analyzer');
 var CheckEvent = require('./models/checkEvent');
 var Ping       = require('./models/ping');
 
+if (process.env.VCAP_SERVICES){
+    srv = JSON.parse(process.env.VCAP_SERVICES);
+    cred = srv['mongodb-1.8'][0].credentials;
 
+    config.mongodb = {};
+    config.mongodb.user = cred.user;
+    config.mongodb.password = cred.password;
+    config.mongodb.host = cred.hostname;
+    config.mongodb.port = cred.port;
+    config.mongodb.database = cred.db;
+
+    config.port = config.udp_port = process.env.VCAP_APP_PORT;
+    config.udp_address = process.env.VCAP_APP_HOST;
+} else {
+        console.log('No Database...', process.env.VCAP_SERVICES)
+}
 
 // configure mongodb
 mongoose.connect('mongodb://' + config.mongodb.user + ':' + config.mongodb.password + '@' + config.mongodb.server +'/' + config.mongodb.database);
