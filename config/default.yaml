@@ -1,9 +1,3 @@
-mongodb:
-  server:   localhost
-  database: uptime
-  user:     root 
-  password:
-
 monitor:
   name:                   origin
   apiUrl:                 'http://localhost:8082/api'
@@ -19,6 +13,6 @@ analyzer:
 autoStartMonitor: true
 
 server:
-  port:     8082
+  port:     80
 
 verbose: true # only used in dev

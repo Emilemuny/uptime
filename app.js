@@ -12,6 +12,8 @@ var analyzer   = require('./lib/analyzer');
 var CheckEvent = require('./models/checkEvent');
 var Ping       = require('./models/ping');
 
+
+
 // configure mongodb
 mongoose.connect('mongodb://' + config.mongodb.user + ':' + config.mongodb.password + '@' + config.mongodb.server +'/' + config.mongodb.database);
 mongoose.connection.on('error', function (err) {
