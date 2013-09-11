@@ -18,6 +18,9 @@
   "repository": "https://github.com/fzaninotto/uptime",
   "license": "MIT",
   "engines": {
-    "node": "0.8.x"
-  }
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "private": true,
+  "main": "server.js"
 }
